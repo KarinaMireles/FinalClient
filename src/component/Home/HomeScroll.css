@@ -11,8 +11,8 @@
 }
 .sliderimage {
   margin: 0 auto; /* Center image horizontally */
-  width: 100%; /* Your custom width */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Your custom width */
+  max-height: 400px; /* Maintain aspect ratio */
   display: block; /* Ensure max width */
   border-radius: 5% 5% 0 0;
 }
@@ -20,4 +20,9 @@
   width: 90%;
   margin: auto;
   font-size: 1rem;
+}
+.slider__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
