@@ -1,43 +1,36 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import HomeScroll from "./HomeScroll";
-export interface Profile {
-  profilePhoto: string;
-  userName: string;
-  musicGenres: string[];
-  age: number;
-  location: string;
-  bio: string;
+import { UserProfile } from "../../models/Profile";
+interface HomeProps {
+  handleLike: (id: string) => void;
+  handleDislike: (id: string) => void;
+  profiles: UserProfile[];
 }
-const Home = () => {
-  const [profiles, setProfiles] = useState([
-    {
-      profilePhoto:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQixC6Dmj2lazabaG8VtRRGkXoLLVwDCj70tfJtssV81g&s",
-      userName: "Big Daddy",
-      musicGenres: ["country", "Christian"],
-      age: 25,
-      location: "Nashville, TN",
-      bio: "I'm a big daddy looking for a big momma",
-    },
-    {
-      profilePhoto:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQixC6Dmj2lazabaG8VtRRGkXoLLVwDCj70tfJtssV81g&s",
-      userName: "Music Snob",
-      musicGenres: ["country", "Christian"],
-      age: 25,
-      location: "Nashville, TN",
-      bio: "I'm a big daddy looking for a big momma",
-    },
-    {
-      profilePhoto:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQixC6Dmj2lazabaG8VtRRGkXoLLVwDCj70tfJtssV81g&s",
-      userName: "Christian Lover",
-      musicGenres: ["country", "Christian"],
-      age: 25,
-      location: "Nashville, TN",
-      bio: "I love the music of the Lord",
-    },
-  ]);
-  return <HomeScroll profiles={profiles} />;
+
+const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
+  // const handleDislike = (index: number) => {
+  //   // Removing the disliked profile from the array
+  //   setProfiles((prev) => prev.filter((_, i) => i !== index));
+  // };
+
+  // const handleLike = (index: number) => {
+  //   // For now, just remove the profile, but you could add different logic
+  //   setProfiles((prev) => prev.filter((_, i) => i !== index));
+  // };
+
+  return (
+    <div>
+      {profiles.length > 0 ? (
+        <HomeScroll
+          profiles={profiles}
+          onDislike={handleDislike}
+          onLike={handleLike}
+        />
+      ) : (
+        <p>No more profiles.</p>
+      )}
+    </div>
+  );
 };
+
 export default Home;
