@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import HomeScroll from "./HomeScroll";
 import { UserProfile } from "../../models/Profile";
+import Profile from "../Profile/Profile";
 interface HomeProps {
   handleLike: (id: string) => void;
   handleDislike: (id: string) => void;
@@ -21,6 +22,15 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
   return (
     <div>
       {profiles.length > 0 ? (
+        <Profile
+          onDislike={handleDislike}
+          onLike={handleLike}
+          profile={profiles[0]}
+        />
+      ) : (
+        <p>No more profiles to view.</p>
+      )}
+      {/* {profiles.length > 0 ? (
         <HomeScroll
           profiles={profiles}
           onDislike={handleDislike}
@@ -28,7 +38,7 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
         />
       ) : (
         <p>No more profiles.</p>
-      )}
+      )} */}
     </div>
   );
 };

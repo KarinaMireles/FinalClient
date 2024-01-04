@@ -9,7 +9,7 @@ import BottomMenu from "./component/BottomMenu/BottomMenu";
 import Home from "./component/Home/Home";
 import Matches from "./component/Matches/Matches";
 import Messages from "./component/Messages/Messages";
-// import Profile from "./component/Profile/Profile";
+import Profile from "./component/Profile/Profile";
 import Header from "./component/Header/Header";
 import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useState } from "react";
@@ -43,12 +43,27 @@ function App() {
     },
     // ... other profiles
   ]);
+  const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
+
   const addLikedMatch = (id: string) => {
     setLikedMatches((prev) => [...prev, id]);
+    const likedProfile = profiles.find((profile) => profile.id === id);
+    if (likedProfile) {
+      setMyMatches((prev) => [...prev, likedProfile]);
+      const newProfiles = profiles.filter((profile) => profile.id !== id);
+      setProfiles(newProfiles);
+    }
   };
+
   const addDislikedMatch = (id: string) => {
     setDislikedMatches((prev) => [...prev, id]);
+    const dislikedProfile = profiles.find((profile) => profile.id === id);
+    if (dislikedProfile) {
+      const newProfiles = profiles.filter((profile) => profile.id !== id);
+      setProfiles(newProfiles);
+    }
   };
+
   return (
     <div className="App">
       <Router>
@@ -66,9 +81,27 @@ function App() {
               />
             }
           />
-          <Route path="/matches" element={<Matches />} />
+          <Route
+            path="/matches"
+            element={
+              <Matches
+                profiles={myMatches}
+                handleDislike={addDislikedMatch}
+                handleLike={addLikedMatch}
+              />
+            }
+          />
           <Route path="/messages" element={<Messages />} />
-          {/* <Route path="/profile" element={<Profile />} /> */}
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                profile={profiles[0]}
+                onLike={addLikedMatch}
+                onDislike={addDislikedMatch}
+              />
+            }
+          />
           <Route path="/profile/edit" element={<ProfileEditForm />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

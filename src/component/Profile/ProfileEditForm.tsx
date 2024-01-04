@@ -4,13 +4,13 @@ import "./ProfileEditForm.css";
 import ImageUpload from "./ImageUpload/ImageUpload";
 
 const ProfileEditForm: React.FC = () => {
-  const initialProfile: UserProfile = {
+  const initialProfile: Partial<UserProfile> = {
     username: "",
     email: "",
     bio: "",
     age: null,
   };
-  const [input, setInput] = useState<UserProfile>(initialProfile);
+  const [input, setInput] = useState<Partial<UserProfile>>(initialProfile);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput({
