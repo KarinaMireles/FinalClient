@@ -14,6 +14,7 @@ import Header from "./component/Header/Header";
 import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useState } from "react";
 import { UserProfile } from "./models/Profile";
+import { getUsers } from "./services";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
@@ -49,6 +50,7 @@ function App() {
   const addDislikedMatch = (id: string) => {
     setDislikedMatches((prev) => [...prev, id]);
   };
+
   return (
     <div className="App">
       <Router>
