@@ -12,7 +12,7 @@
 .sliderimage {
   margin: 0 auto; /* Center image horizontally */
   max-width: 100%; /* Your custom width */
-  max-height: 400px; /* Maintain aspect ratio */
+  max-height: 300px; /* Maintain aspect ratio */
   display: block; /* Ensure max width */
   border-radius: 5% 5% 0 0;
 }
