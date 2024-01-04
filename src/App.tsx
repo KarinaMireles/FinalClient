@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BottomMenu from "./component/BottomMenu/BottomMenu";
 import Home from "./component/Home/Home";
@@ -15,14 +10,14 @@ import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useState } from "react";
 import { UserProfile } from "./models/Profile";
 import { getUsers } from "./services";
+import PFP from "./assets/PFP.jpg";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
   const [dislikedMatches, setDislikedMatches] = useState<string[]>([]);
   const [profiles, setProfiles] = useState<UserProfile[]>([
     {
-      profilePhoto:
-        "https://th.bing.com/th/id/OIP.BHhOApKVqIj0KDfCRxmLJgHaE8?rs=1&pid=ImgDetMain",
+      profilePhoto: "https://th.bing.com/th/id/OIP.BHhOApKVqIj0KDfCRxmLJgHaE8?rs=1&pid=ImgDetMain",
       username: "Big Daddy",
       musicGenres: ["country", "Christian"],
       age: 25,
@@ -65,6 +60,17 @@ function App() {
     }
   };
 
+  const mockUserProfile: UserProfile = {
+    id: "abc_123",
+    profilePhoto: "https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg", // Replace with an actual URL or null
+    username: "Jake",
+    age: 27, // or null if age is not known
+    location: "Grand Rapids, MI", // or null
+    bio: "Hard bass, soft piano",
+    email: "", // Replace with actual email or null
+    musicGenres: ["Techno", "Jazz"], // or null if not known
+  };
+
   return (
     <div className="App">
       <Router>
@@ -74,34 +80,16 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              <Home
-                handleLike={addLikedMatch}
-                handleDislike={addDislikedMatch}
-                profiles={profiles}
-              />
-            }
+            element={<Home handleLike={addLikedMatch} handleDislike={addDislikedMatch} profiles={profiles} />}
           />
           <Route
             path="/matches"
-            element={
-              <Matches
-                profiles={myMatches}
-                handleDislike={addDislikedMatch}
-                handleLike={addLikedMatch}
-              />
-            }
+            element={<Matches profiles={myMatches} handleDislike={addDislikedMatch} handleLike={addLikedMatch} />}
           />
           <Route path="/messages" element={<Messages />} />
           <Route
             path="/profile"
-            element={
-              <Profile
-                profile={profiles[0]}
-                onLike={addLikedMatch}
-                onDislike={addDislikedMatch}
-              />
-            }
+            element={<Profile profile={mockUserProfile} onLike={addLikedMatch} onDislike={addDislikedMatch} />}
           />
           <Route path="/profile/edit" element={<ProfileEditForm />} />
           <Route path="*" element={<Navigate to="/" />} />
