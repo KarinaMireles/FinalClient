@@ -13,7 +13,9 @@ const settings = {
   slidesToScroll: 1,
   //centerPadding: 0,
   centerMode: true,
-  adaptiveHeight: true,
+  adaptiveHeight: false,
+  variableHeight: false,
+  draggable: true,
   responsive: [
     {
       breakpoint: 1024,

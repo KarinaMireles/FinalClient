@@ -41,6 +41,50 @@ function App() {
       email: "KatS28@gmail.com",
       id: "2",
     },
+    {
+      profilePhoto:
+        "https://www.edmsauce.com/wp-content/uploads/2022/08/What-is-a-Wook-scaled.jpg",
+      username: "Sam",
+      musicGenres: ["Electronic", "EDM"],
+      age: 35,
+      location: "KNoxville, TN",
+      bio: "Looking for my forever girl to go to EF with",
+      email: "Sam22@gmail.com",
+      id: "3",
+    },
+    {
+      profilePhoto:
+        "https://th.bing.com/th/id/OIP._559T7lVnEmi55N5ErmtVAHaLV?rs=1&pid=ImgDetMain",
+      username: "Sarah",
+      musicGenres: ["Pop", "Dance"],
+      age: 32,
+      location: "Lansing, MI",
+      bio: "Looking for friends to dance with",
+      email: "Sarah123456@gmail.com",
+      id: "4",
+    },
+    {
+      profilePhoto:
+        "https://i.pinimg.com/originals/59/b1/6b/59b16b46ff76abddaab6d5fd1a8546d3.jpg",
+      username: "Patrick",
+      musicGenres: ["House", "Metal"],
+      age: 27,
+      location: "Austin, TX",
+      bio: "Looking for friends to dance with",
+      email: "Patrick@gmail.com",
+      id: "5",
+    },
+    {
+      profilePhoto:
+        "https://th.bing.com/th/id/R.52b521e8664bfa34996daab6feb3e3e0?rik=piSbVMAdFWZYWQ&pid=ImgRaw&r=0",
+      username: "Sierra",
+      musicGenres: ["Classical", "Baroque"],
+      age: 29,
+      location: "Los Angeles, CA",
+      bio: "Looking for girls to go to the symphony with",
+      email: "Sierra222@gmail.com",
+      id: "6",
+    },
     // ... other profiles
   ]);
   const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
