@@ -1,9 +1,13 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { UserProfile } from "../../models/Profile";
 import "./ProfileEditForm.css";
 import ImageUpload from "./ImageUpload/ImageUpload";
+import AuthContext from "../../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEditForm: React.FC = () => {
+  const navigate = useNavigate();
+  const { userProfile, updateUserProfile } = useContext(AuthContext);
   const initialProfile: Partial<UserProfile> = {
     username: "",
     email: "",
@@ -28,9 +32,11 @@ const ProfileEditForm: React.FC = () => {
 
   const handleProfileSubmit = (e: FormEvent) => {
     e.preventDefault();
+    updateUserProfile(input as UserProfile);
     // This is where we will call the update user function
     console.log(input);
     setInput(initialProfile);
+    navigate("/profile");
   };
 
   return (
@@ -65,7 +71,7 @@ const ProfileEditForm: React.FC = () => {
           onChange={handleChange}
         />
         <button type="submit" className="profileButton">
-          Edit Profile
+          Submit
         </button>
       </form>
       <ImageUpload />
