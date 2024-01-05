@@ -17,6 +17,7 @@ import { UserProfile } from "./models/Profile";
 import { getUsers } from "./services";
 import PFP from "./assets/PFP.jpg";
 import AuthContext from "./AuthContext";
+import Login from "./Login";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
@@ -152,6 +153,7 @@ function App() {
             }
           />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/profile"
             element={

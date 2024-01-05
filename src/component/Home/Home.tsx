@@ -20,7 +20,7 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
   // };
 
   return (
-    <div>
+    <div className="home">
       {profiles.length > 0 ? (
         <Profile
           onDislike={handleDislike}

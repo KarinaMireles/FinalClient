@@ -35,7 +35,7 @@ export const postUser = async (item: UserProfile): Promise<UserProfile> =>
 		})
 	).data
 
-export const putItem = async (
+export const putUser = async (
 	id: string,
 	item: UserProfile
 ): Promise<UserProfile> =>
