@@ -1,14 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserProfile } from "../../models/Profile";
 import { FC, useContext } from "react";
 import AuthContext from "../../AuthContext";
+import "../Home/HomeScroll.css";
 interface ProfileProps {
   profile: UserProfile;
   onDislike: (id: string) => void;
   onLike: (id: string) => void;
+  onMatches: boolean;
 }
-const Profile: FC<ProfileProps> = ({ profile, onLike, onDislike }) => {
+const Profile: FC<ProfileProps> = ({
+  profile,
+  onLike,
+  onDislike,
+  onMatches = false,
+}) => {
   const { userProfile } = useContext(AuthContext);
+  const onUserProfilePage = userProfile?.id === profile?.id;
+  const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const handleEditProfile = () => {
     navigate("/profile/edit");
@@ -27,12 +37,13 @@ const Profile: FC<ProfileProps> = ({ profile, onLike, onDislike }) => {
           <div>{profile && profile.location}</div>
           <div>{profile && profile.bio}</div>
         </div>
-        {userProfile?.id !== profile?.id ? (
+        {onMatches === false && onUserProfilePage === false && (
           <div className="slider__buttons">
             <button onClick={() => onDislike(profile.id)}>Dislike (X)</button>
             <button onClick={() => onLike(profile.id)}>Like (♥)</button>
           </div>
-        ) : (
+        )}
+        {userProfile?.id === profile?.id && (
           <button onClick={handleEditProfile}> Edit Profile </button>
         )}
       </div>

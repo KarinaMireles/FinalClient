@@ -159,6 +159,7 @@ function App() {
                 profile={userProfile}
                 onLike={addLikedMatch}
                 onDislike={addDislikedMatch}
+                onMatches={false}
               />
             }
           />

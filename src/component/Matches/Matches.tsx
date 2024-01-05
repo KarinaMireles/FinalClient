@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { UserProfile } from "../../models/Profile";
-import HomeScroll from "../Home/HomeScroll";
+import Profile from "../Profile/Profile";
+// import HomeScroll from "../Home/HomeScroll";
 
 interface MatchesProps {
   profiles: UserProfile[];
@@ -12,12 +13,20 @@ const Matches: FC<MatchesProps> = ({ profiles, handleDislike, handleLike }) => {
   return (
     <div>
       {profiles.length > 0 ? (
-        <HomeScroll
-          profiles={profiles}
-          onDislike={handleDislike}
-          onLike={handleLike}
-        />
+        profiles.map((profile) => (
+          <Profile
+            profile={profile}
+            onDislike={handleDislike}
+            onLike={handleLike}
+            onMatches={true}
+          />
+        ))
       ) : (
+        // // <HomeScroll
+        //   profiles={profiles}
+        //   onDislike={handleDislike}
+        //   onLike={handleLike}
+        // />
         <p>No profiles shown.</p>
       )}
     </div>
