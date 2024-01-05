@@ -22,6 +22,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
   });
   const updateUserProfile = (profile: UserProfile) => {
     setUserProfile({ ...userProfile, ...profile });
+    console.log(profile)
   };
   useEffect(() => {
     auth.onAuthStateChanged((newUser) => setUser(newUser));
