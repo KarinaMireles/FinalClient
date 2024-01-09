@@ -23,6 +23,7 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
     <div className="home">
       {profiles.length > 0 ? (
         <Profile
+          onMatches={false}
           onDislike={handleDislike}
           onLike={handleLike}
           profile={profiles[0]}
