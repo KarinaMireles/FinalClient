@@ -1,15 +1,12 @@
-#root {
+body {
   width: 100vw;
-  height: 100vh;
-  min-height: fit-content;
+  min-height: 100vh;
   background: linear-gradient(180deg, #b21368 0%, #5f093d 100%);
 
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-
-
 }
 
 @media (min-width: 768px) {
@@ -18,5 +15,4 @@
     flex-direction: row;
     justify-content: space-between;
   }
-
 }
