@@ -15,3 +15,18 @@
   color: #f7f8f6;
   font-weight: 600;
 }
+@media (min-width: 768px) {
+  .bottom-menu {
+    display: block;
+    position: fixed;
+    right: auto;
+    bottom: auto;
+    flex-direction: column;
+    width: 20vw;
+  }
+  .bottom-menu__item {
+    font-weight: 600;
+    margin: 10px;
+    font-size: 1.5rem;
+  }
+}

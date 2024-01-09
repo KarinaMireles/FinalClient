@@ -129,44 +129,45 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-
-        <BottomMenu />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                handleLike={addLikedMatch}
-                handleDislike={addDislikedMatch}
-                profiles={profiles}
-              />
-            }
-          />
-          <Route
-            path="/matches"
-            element={
-              <Matches
-                profiles={myMatches}
-                handleDislike={addDislikedMatch}
-                handleLike={addLikedMatch}
-              />
-            }
-          />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                profile={userProfile}
-                onLike={addLikedMatch}
-                onDislike={addDislikedMatch}
-              />
-            }
-          />
-          <Route path="/profile/edit" element={<ProfileEditForm />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <div className="App__content">
+          <BottomMenu />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  handleLike={addLikedMatch}
+                  handleDislike={addDislikedMatch}
+                  profiles={profiles}
+                />
+              }
+            />
+            <Route
+              path="/matches"
+              element={
+                <Matches
+                  profiles={myMatches}
+                  handleDislike={addDislikedMatch}
+                  handleLike={addLikedMatch}
+                />
+              }
+            />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  profile={userProfile}
+                  onLike={addLikedMatch}
+                  onDislike={addDislikedMatch}
+                />
+              }
+            />
+            <Route path="/profile/edit" element={<ProfileEditForm />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
       </Router>
     </div>
   );
