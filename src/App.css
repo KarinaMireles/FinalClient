@@ -1,16 +1,15 @@
 #root {
   width: 100vw;
   height: 100vh;
+  min-height: fit-content;
   background: linear-gradient(180deg, #b21368 0%, #5f093d 100%);
+
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
 
-  /* max-width: 1280px;
-margin: 0 auto;
-padding: 2rem;
-text-align: center; */
+
 }
 
 @media (min-width: 768px) {
@@ -19,4 +18,5 @@ text-align: center; */
     flex-direction: row;
     justify-content: space-between;
   }
+
 }

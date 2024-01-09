@@ -129,6 +129,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+
         <div className="App__content">
           <BottomMenu />
           <Routes>
@@ -168,6 +169,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
+
       </Router>
     </div>
   );
