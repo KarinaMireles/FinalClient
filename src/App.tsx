@@ -159,6 +159,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
+                  onMatches={false}
                   profile={userProfile}
                   onLike={addLikedMatch}
                   onDislike={addDislikedMatch}
@@ -169,7 +170,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
-
       </Router>
     </div>
   );
