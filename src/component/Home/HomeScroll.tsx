@@ -42,8 +42,8 @@ const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
   return (
     <Slider {...settings}>
       {profiles.map((profile, index) => (
-        <div>
-          <div className="slider" key={index}>
+        <div key={index}>
+          <div className="slider">
             <img
               className="sliderimage"
               src={profile.profilePhoto || ""}
