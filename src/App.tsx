@@ -27,7 +27,7 @@ function App() {
     {
       profilePhoto:
         "https://th.bing.com/th/id/OIP.BHhOApKVqIj0KDfCRxmLJgHaE8?rs=1&pid=ImgDetMain",
-      username: "Big Daddy",
+      displayName: "Big Daddy",
       musicGenres: ["country", "Christian"],
       age: 25,
       location: "Nashville, TN",
@@ -38,7 +38,7 @@ function App() {
     {
       profilePhoto:
         "https://th.bing.com/th/id/R.6b0654f78130f63f1cd66100e787c6a3?rik=MT5NjQUVw%2fg7mA&riu=http%3a%2f%2fmymodernmet.com%2fwp%2fwp-content%2fuploads%2f2017%2f04%2fredheads-brian-dowling-10.jpg&ehk=pi3XKq3lAOuqvBIWDmAgrkjEqHGi9dkoiNHhjSqTGe0%3d&risl=&pid=ImgRaw&r=0",
-      username: "Kat",
+      displayName: "Kat",
       musicGenres: ["Electro", "Techno"],
       age: 28,
       location: "Detroit, MI",
@@ -49,7 +49,7 @@ function App() {
     {
       profilePhoto:
         "https://www.edmsauce.com/wp-content/uploads/2022/08/What-is-a-Wook-scaled.jpg",
-      username: "Sam",
+      displayName: "Sam",
       musicGenres: ["Electronic", "EDM"],
       age: 35,
       location: "KNoxville, TN",
@@ -60,7 +60,7 @@ function App() {
     {
       profilePhoto:
         "https://th.bing.com/th/id/OIP._559T7lVnEmi55N5ErmtVAHaLV?rs=1&pid=ImgDetMain",
-      username: "Sarah",
+      displayName: "Sarah",
       musicGenres: ["Pop", "Dance"],
       age: 32,
       location: "Lansing, MI",
@@ -71,7 +71,7 @@ function App() {
     {
       profilePhoto:
         "https://i.pinimg.com/originals/59/b1/6b/59b16b46ff76abddaab6d5fd1a8546d3.jpg",
-      username: "Patrick",
+      displayName: "Patrick",
       musicGenres: ["House", "Metal"],
       age: 27,
       location: "Austin, TX",
@@ -82,7 +82,7 @@ function App() {
     {
       profilePhoto:
         "https://th.bing.com/th/id/R.52b521e8664bfa34996daab6feb3e3e0?rik=piSbVMAdFWZYWQ&pid=ImgRaw&r=0",
-      username: "Sierra",
+      displayName: "Sierra",
       musicGenres: ["Classical", "Baroque"],
       age: 29,
       location: "Los Angeles, CA",
@@ -117,7 +117,7 @@ function App() {
   //   id: "abc_123",
   //   profilePhoto:
   //     "https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg", // Replace with an actual URL or null
-  //   username: "Jake",
+  //   displayName: "Jake",
   //   age: 27, // or null if age is not known
   //   location: "Grand Rapids, MI", // or null
   //   bio: "Hard bass, soft piano",

@@ -1,5 +1,5 @@
-import { UserProfile } from "./models/Profile"
-import { auth } from "./firebaseConfig"
+import { UserProfile } from "../models/Profile"
+import { auth } from "../firebaseConfig"
 import axios from "axios"
 
 const baseUrl = import.meta.env.VITE_API_URL
@@ -57,3 +57,7 @@ export const deleteUser = async (id: string): Promise<void> =>
 			Authorization: `Bearer ${await getToken()}`
 		}
 	})
+
+export const updateUserProfileBackend = async (user: UserProfile): Promise<UserProfile> => {
+    return await axios.put(baseUrl + "/user/" + encodeURIComponent(user.id), user)
+}

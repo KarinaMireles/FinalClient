@@ -13,7 +13,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
     id: "abc_123",
     profilePhoto:
       "https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg", // Replace with an actual URL or null
-    username: "Jake",
+    displayName: "Jake",
     age: 27, // or null if age is not known
     location: "Grand Rapids, MI", // or null
     bio: "Hard bass, soft piano",

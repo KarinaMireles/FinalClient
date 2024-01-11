@@ -4,17 +4,12 @@ import "./ProfileEditForm.css";
 import ImageUpload from "./ImageUpload/ImageUpload";
 import AuthContext from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
+import { updateUserProfileBackend } from "../../services/services";
 
 const ProfileEditForm: React.FC = () => {
   const navigate = useNavigate();
   const { userProfile, updateUserProfile } = useContext(AuthContext);
-  const initialProfile: Partial<UserProfile> = {
-    username: "",
-    email: "",
-    bio: "",
-    age: null,
-  };
-  const [input, setInput] = useState<Partial<UserProfile>>(initialProfile);
+  const [input, setInput] = useState<UserProfile>({...userProfile});
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput({
@@ -33,9 +28,7 @@ const ProfileEditForm: React.FC = () => {
   const handleProfileSubmit = (e: FormEvent) => {
     e.preventDefault();
     updateUserProfile(input as UserProfile);
-    // This is where we will call the update user function
-    console.log(input);
-    setInput(initialProfile);
+    updateUserProfileBackend(input)
     navigate("/profile");
   };
 
@@ -45,8 +38,8 @@ const ProfileEditForm: React.FC = () => {
         <label>Username</label>{" "}
         <input
           type="text"
-          name="username"
-          value={input.username}
+          name="displayName"
+          value={input.displayName}
           onChange={handleChange}
         />
         <label>Email</label>{" "}

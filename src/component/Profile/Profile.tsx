@@ -29,10 +29,10 @@ const Profile: FC<ProfileProps> = ({
         <img
           className="sliderimage"
           src={(profile && profile.profilePhoto) || ""}
-          alt={`${profile && profile.username}`}
+          alt={`${profile && profile.displayName}`}
         />
         <div className="slider__text">
-          <div>{profile && profile.username}</div>
+          <div>{profile && profile.displayName}</div>
           <div>{profile && profile.age}</div>
           <div>{profile && profile.location}</div>
           <div>{profile && profile.bio}</div>
