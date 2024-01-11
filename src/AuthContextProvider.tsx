@@ -10,28 +10,30 @@ interface Props {
 const AuthContextProvider: FC<Props> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile>({
-    id: "abc_123",
-    profilePhoto:
-      "https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg", // Replace with an actual URL or null
-    displayName: "Jake",
-    age: 27, // or null if age is not known
-    location: "Grand Rapids, MI", // or null
-    bio: "Hard bass, soft piano",
-    email: "", // Replace with actual email or null
-    musicGenres: ["Techno", "Jazz"],
+    displayName: "",
+    email: "",
+    bio: "",
+    dob: "",
+    gender: "",
+    genderPreference: "",
+    topArtists: [],
+    age: null,
+    status: "",
+    profilePhoto: "",
+    musicGenres: [],
+    location: "",
+    id: "",
+    likedUsers: [],
+    dislikedUsers: [],
   });
   const updateUserProfile = (profile: UserProfile) => {
     setUserProfile({ ...userProfile, ...profile });
-    console.log(profile)
+    console.log(profile);
   };
   useEffect(() => {
     auth.onAuthStateChanged((newUser) => setUser(newUser));
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ user, userProfile, updateUserProfile }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, userProfile, updateUserProfile }}>{children}</AuthContext.Provider>;
 };
 export default AuthContextProvider;
