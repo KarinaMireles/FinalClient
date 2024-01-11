@@ -50,7 +50,7 @@ const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
               alt={`Slide ${index}`}
             />
             <div className="slider__text">
-              <div>{profile.username}</div>
+              <div>{profile.displayName}</div>
               <div>{profile.age}</div>
               <div>{profile.location}</div>
               <div>{profile.bio}</div>
