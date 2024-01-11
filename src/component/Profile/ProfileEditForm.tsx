@@ -9,13 +9,7 @@ import { updateUserProfileBackend } from "../../services/services";
 const ProfileEditForm: React.FC = () => {
   const navigate = useNavigate();
   const { userProfile, updateUserProfile } = useContext(AuthContext);
-  const initialProfile: Partial<UserProfile> = {
-    displayName: "",
-    email: "",
-    bio: "",
-    age: null,
-  };
-  const [input, setInput] = useState<Partial<UserProfile>>(initialProfile);
+  const [input, setInput] = useState<UserProfile>({ ...userProfile });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput({
@@ -34,16 +28,14 @@ const ProfileEditForm: React.FC = () => {
   const handleProfileSubmit = (e: FormEvent) => {
     e.preventDefault();
     updateUserProfile(input as UserProfile);
-    // This is where we will call the update user function
-    console.log(input);
-    setInput(initialProfile);
+    updateUserProfileBackend(input);
     navigate("/profile");
   };
 
   return (
     <div>
       <form onSubmit={handleProfileSubmit}>
-        <label>Username</label>
+        <label>Username</label>{" "}
         <input type="text" name="displayName" value={input.displayName} onChange={handleChange} />
         <label>Email</label> <input type="text" name="email" value={input.email} onChange={handleChange} />
         <label>Bio</label> <input type="textarea" name="bio" value={input.bio} onChange={handleChange} />
