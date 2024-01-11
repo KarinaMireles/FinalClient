@@ -2,7 +2,7 @@ import { FC } from "react";
 import { UserProfile } from "../../models/Profile";
 import Profile from "../Profile/Profile";
 // import HomeScroll from "../Home/HomeScroll";
-
+import { Link } from "react-router-dom";
 interface MatchesProps {
   profiles: UserProfile[];
   handleLike: (id: string) => void;
@@ -14,12 +14,17 @@ const Matches: FC<MatchesProps> = ({ profiles, handleDislike, handleLike }) => {
     <div>
       {profiles.length > 0 ? (
         profiles.map((profile) => (
-          <Profile
-            profile={profile}
-            onDislike={handleDislike}
-            onLike={handleLike}
-            onMatches={true}
-          />
+          <div key={profile.id}>
+            <Profile
+              profile={profile}
+              onDislike={handleDislike}
+              onLike={handleLike}
+              onMatches={true}
+            />
+            <Link to={`/messages/${profile.id}`} className="message-button">
+              Message
+            </Link>
+          </div>
         ))
       ) : (
         // // <HomeScroll
