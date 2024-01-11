@@ -9,12 +9,7 @@ interface ProfileProps {
   onLike: (id: string) => void;
   onMatches: boolean;
 }
-const Profile: FC<ProfileProps> = ({
-  profile,
-  onLike,
-  onDislike,
-  onMatches = false,
-}) => {
+const Profile: FC<ProfileProps> = ({ profile, onLike, onDislike, onMatches = false }) => {
   const { userProfile } = useContext(AuthContext);
   const onUserProfilePage = userProfile?.id === profile?.id;
   const location = useLocation();
@@ -43,9 +38,7 @@ const Profile: FC<ProfileProps> = ({
             <button onClick={() => onLike(profile.id)}>Like (♥)</button>
           </div>
         )}
-        {userProfile?.id === profile?.id && (
-          <button onClick={handleEditProfile}> Edit Profile </button>
-        )}
+        {userProfile?.id === profile?.id && <button onClick={handleEditProfile}> Edit Profile </button>}
       </div>
     </div>
   );

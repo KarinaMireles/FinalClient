@@ -9,7 +9,7 @@ import { updateUserProfileBackend } from "../../services/services";
 const ProfileEditForm: React.FC = () => {
   const navigate = useNavigate();
   const { userProfile, updateUserProfile } = useContext(AuthContext);
-  const [input, setInput] = useState<UserProfile>({...userProfile});
+  const [input, setInput] = useState<UserProfile>({ ...userProfile });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput({
@@ -28,7 +28,7 @@ const ProfileEditForm: React.FC = () => {
   const handleProfileSubmit = (e: FormEvent) => {
     e.preventDefault();
     updateUserProfile(input as UserProfile);
-    updateUserProfileBackend(input)
+    updateUserProfileBackend(input);
     navigate("/profile");
   };
 
@@ -36,33 +36,10 @@ const ProfileEditForm: React.FC = () => {
     <div>
       <form onSubmit={handleProfileSubmit}>
         <label>Username</label>{" "}
-        <input
-          type="text"
-          name="displayName"
-          value={input.displayName}
-          onChange={handleChange}
-        />
-        <label>Email</label>{" "}
-        <input
-          type="text"
-          name="email"
-          value={input.email}
-          onChange={handleChange}
-        />
-        <label>Bio</label>{" "}
-        <input
-          type="textarea"
-          name="bio"
-          value={input.bio}
-          onChange={handleChange}
-        />
-        <label>Age</label>{" "}
-        <input
-          type="number"
-          name="age"
-          value={input.age || 0}
-          onChange={handleChange}
-        />
+        <input type="text" name="displayName" value={input.displayName} onChange={handleChange} />
+        <label>Email</label> <input type="text" name="email" value={input.email} onChange={handleChange} />
+        <label>Bio</label> <input type="textarea" name="bio" value={input.bio} onChange={handleChange} />
+        <label>Age</label> <input type="number" name="age" value={input.age || 0} onChange={handleChange} />
         <button type="submit" className="profileButton">
           Submit
         </button>
