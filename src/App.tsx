@@ -9,28 +9,35 @@ import Header from "./component/Header/Header";
 import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useContext, useEffect, useState } from "react";
 import { UserProfile } from "./models/Profile";
-import { getUsers } from "../src/services/services";
+import { getUsers, putUser, updateUserProfileBackend } from "../src/services/services";
 import AuthContext from "./AuthContext";
 import Login from "./Login";
-import Splash from "./component/Splash/splash";
+import Splash from "./component/Splash/Splash";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
   const [dislikedMatches, setDislikedMatches] = useState<string[]>([]);
-  const { userProfile } = useContext(AuthContext);
+  const { userProfile, updateUserProfile } = useContext(AuthContext);
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
-  const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
+
   useEffect(() => {
-    getUsers().then((users) => {
-      setProfiles(users.filter((user) => user.id !== userProfile?.id));
+    if (!userProfile.id) return;
+    getUsers(userProfile.id).then((users) => {
+      setProfiles(users);
     });
-  }, [userProfile]);
+    setLikedMatches(userProfile?.likedUsers || []);
+    setDislikedMatches(userProfile?.dislikedUsers || []);
+  }, [userProfile.id]);
 
   const addLikedMatch = (id: string = "") => {
     setLikedMatches((prev) => [...prev, id]);
-    const likedProfile = profiles.find((profile) => profile.id === id);
+    const likedProfile = profiles?.find((profile) => profile.id === id);
     if (likedProfile) {
-      setMyMatches((prev) => [...prev, likedProfile]);
+      updateUserProfileBackend({
+        ...userProfile,
+        likedUsers: [...likedMatches, id],
+      });
+      updateUserProfile({ ...userProfile, likedUsers: [...likedMatches, id] });
       const newProfiles = profiles.filter((profile) => profile.id !== id);
       setProfiles(newProfiles);
     }
@@ -70,10 +77,7 @@ function App() {
               path="/home"
               element={<Home handleLike={addLikedMatch} handleDislike={addDislikedMatch} profiles={profiles} />}
             />
-            <Route
-              path="/matches"
-              element={<Matches profiles={myMatches} handleDislike={addDislikedMatch} handleLike={addLikedMatch} />}
-            />
+            <Route path="/matches" element={<Matches handleDislike={addDislikedMatch} handleLike={addLikedMatch} />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/login" element={<Login />} />
             <Route
