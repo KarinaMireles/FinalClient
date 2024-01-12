@@ -12,6 +12,7 @@ import { UserProfile } from "./models/Profile";
 import { getUsers } from "../src/services/services";
 import AuthContext from "./AuthContext";
 import Login from "./Login";
+import Splash from "./component/Splash/splash";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
@@ -21,9 +22,9 @@ function App() {
   const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
   useEffect(() => {
     getUsers().then((users) => {
-      setProfiles(users);
+      setProfiles(users.filter((user) => user.id !== userProfile?.id));
     });
-  }, []);
+  }, [userProfile]);
 
   const addLikedMatch = (id: string = "") => {
     setLikedMatches((prev) => [...prev, id]);
@@ -64,8 +65,9 @@ function App() {
         <div className="App__content">
           <BottomMenu />
           <Routes>
+            <Route path="/" element={<Splash />} />
             <Route
-              path="/"
+              path="/home"
               element={<Home handleLike={addLikedMatch} handleDislike={addDislikedMatch} profiles={profiles} />}
             />
             <Route
