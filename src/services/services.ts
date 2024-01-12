@@ -8,8 +8,10 @@ const getToken = async (): Promise<string> => {
   return await auth.currentUser.getIdToken(true);
 };
 
+
 export const getUsers = async (id: string): Promise<UserProfile[]> => {
   const users = await axios.get(baseUrl + "/user?myId=" + encodeURIComponent(id));
+
   return users.data;
 };
 
@@ -31,12 +33,15 @@ export const postUser = async (item: UserProfile): Promise<UserProfile> =>
     })
   ).data;
 
-export const putUser = async (id: string, item: UserProfile): Promise<UserProfile> =>
+export const putUser = async (
+  id: string,
+  item: UserProfile
+): Promise<UserProfile> =>
   (
     await axios.post(baseUrl + "/user/" + encodeURIComponent(id), item, {
-      headers: {
-        Authorization: `Bearer ${await getToken()}`,
-      },
+      // headers: {
+      //   Authorization: `Bearer ${await getToken()}`,
+      // },
     })
   ).data;
 
@@ -47,6 +52,11 @@ export const deleteUser = async (id: string): Promise<void> =>
     },
   });
 
-export const updateUserProfileBackend = async (user: UserProfile): Promise<UserProfile> => {
-  return await axios.put(baseUrl + "/user/" + encodeURIComponent(user.id), user);
+export const updateUserProfileBackend = async (
+  user: UserProfile
+): Promise<UserProfile> => {
+  return await axios.put(
+    baseUrl + "/user/" + encodeURIComponent(user.id),
+    user
+  );
 };
