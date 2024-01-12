@@ -29,12 +29,14 @@ function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
 
   useEffect(() => {
-    getUsers().then((users) => {
+    if (!userProfile.id) return;
+    getUsers(userProfile.id).then((users) => {
       setProfiles(users);
     });
-    setLikedMatches(userProfile?.likedUsers || []);
+      setLikedMatches(userProfile?.likedUsers || []);
     setDislikedMatches(userProfile?.dislikedUsers || []);
-  }, []);
+
+  }, [userProfile.id]);
 
   const addLikedMatch = (id: string = "") => {
     setLikedMatches((prev) => [...prev, id]);
