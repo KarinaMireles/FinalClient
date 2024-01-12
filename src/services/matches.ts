@@ -13,9 +13,10 @@ export const getMatches = async (id: string): Promise<UserProfile[]> => {
   const user = await axios.get(baseUrl + "/user/" + id, {});
   console.log(" get users return data ----------------------------", user.data);
   const matchesIds = user.data.likedUsers;
-  const allUsers = await axios.get(baseUrl + "/user", {});
-  const matches = matchesIds.map((id: string) => {
-    return allUsers.data.find((user: UserProfile) => user.id === id);
-  });
+  const allUsers = await axios.get(baseUrl + "/user?myId=" + encodeURIComponent(id));
+  console.log("allUsers", allUsers);
+  const matches = allUsers.data.filter((user: UserProfile) => matchesIds.includes(user.id));
+  console.log("matches", matches);
+  console.log("matchesIds", matchesIds);
   return matches;
 };
