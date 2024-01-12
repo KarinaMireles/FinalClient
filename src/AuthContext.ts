@@ -6,6 +6,7 @@ export interface AuthContextModel {
   user: User | null;
   userProfile: UserProfile;
   updateUserProfile: (profile: UserProfile) => void;
+  logout: () => void;
 }
 
 const defaultValue: AuthContextModel = {
@@ -28,6 +29,7 @@ const defaultValue: AuthContextModel = {
     dislikedUsers: [],
   },
   updateUserProfile: (profile: UserProfile) => {},
+  logout: () => {},
 };
 
 const AuthContext = createContext(defaultValue);

@@ -1,13 +1,23 @@
 import "./Header.css";
+import AuthContext from "../../AuthContext";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useContext } from "react";
+
 const Header = () => {
-  const handleLogin = () => {
-    const loginUrl = "http://127.0.0.1:5001/final-project-e9adb/us-central1/api/login";
-    window.location.href = loginUrl;
+  const location = useLocation();
+  if (location.pathname === "/") {
+    return null;
+  }
+  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
   return (
     <div className="header">
-      <button className="login-button" onClick={handleLogin}>
-        Login
+      <button className="login-button" onClick={handleLogout}>
+        Logout
       </button>
     </div>
   );

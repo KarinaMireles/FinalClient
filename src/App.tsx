@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BottomMenu from "./component/BottomMenu/BottomMenu";
 import Home from "./component/Home/Home";
@@ -14,13 +9,10 @@ import Header from "./component/Header/Header";
 import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useContext, useEffect, useState } from "react";
 import { UserProfile } from "./models/Profile";
-import {
-  getUsers,
-  putUser,
-  updateUserProfileBackend,
-} from "../src/services/services";
+import { getUsers, putUser, updateUserProfileBackend } from "../src/services/services";
 import AuthContext from "./AuthContext";
 import Login from "./Login";
+import Splash from "./component/Splash/Splash";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
@@ -33,9 +25,8 @@ function App() {
     getUsers(userProfile.id).then((users) => {
       setProfiles(users);
     });
-      setLikedMatches(userProfile?.likedUsers || []);
+    setLikedMatches(userProfile?.likedUsers || []);
     setDislikedMatches(userProfile?.dislikedUsers || []);
-
   }, [userProfile.id]);
 
   const addLikedMatch = (id: string = "") => {
@@ -81,36 +72,18 @@ function App() {
         <div className="App__content">
           <BottomMenu />
           <Routes>
+            <Route path="/" element={<Splash />} />
             <Route
-              path="/"
-              element={
-                <Home
-                  handleLike={addLikedMatch}
-                  handleDislike={addDislikedMatch}
-                  profiles={profiles}
-                />
-              }
+              path="/home"
+              element={<Home handleLike={addLikedMatch} handleDislike={addDislikedMatch} profiles={profiles} />}
             />
-            <Route
-              path="/matches"
-              element={
-                <Matches
-                  handleDislike={addDislikedMatch}
-                  handleLike={addLikedMatch}
-                />
-              }
-            />
+            <Route path="/matches" element={<Matches handleDislike={addDislikedMatch} handleLike={addLikedMatch} />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/profile"
               element={
-                <Profile
-                  onMatches={false}
-                  profile={userProfile}
-                  onLike={addLikedMatch}
-                  onDislike={addDislikedMatch}
-                />
+                <Profile onMatches={false} profile={userProfile} onLike={addLikedMatch} onDislike={addDislikedMatch} />
               }
             />
             <Route path="/profile/edit" element={<ProfileEditForm />} />
