@@ -20,10 +20,11 @@ function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
   const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
   useEffect(() => {
-    getUsers().then((users) => {
+    if (!userProfile.id) return;
+    getUsers(userProfile.id).then((users) => {
       setProfiles(users);
     });
-  }, []);
+  }, [userProfile.id]);
 
   const addLikedMatch = (id: string = "") => {
     setLikedMatches((prev) => [...prev, id]);

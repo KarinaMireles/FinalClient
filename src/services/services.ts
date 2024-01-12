@@ -8,13 +8,8 @@ const getToken = async (): Promise<string> => {
   return await auth.currentUser.getIdToken(true);
 };
 
-export const getUsers = async (): Promise<UserProfile[]> => {
-  const users = await axios.get(baseUrl + "/user", {
-    // headers: {
-    // 	Authorization: `Bearer ${await getToken()}`
-    // }
-  });
-  console.log(" get users return data ----------------------------", users.data);
+export const getUsers = async (id: string): Promise<UserProfile[]> => {
+  const users = await axios.get(baseUrl + "/user?myId=" + encodeURIComponent(id));
   return users.data;
 };
 
