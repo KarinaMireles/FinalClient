@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import BottomMenu from "./component/BottomMenu/BottomMenu";
 import Home from "./component/Home/Home";
@@ -9,27 +14,37 @@ import Header from "./component/Header/Header";
 import ProfileEditForm from "./component/Profile/ProfileEditForm";
 import { useContext, useEffect, useState } from "react";
 import { UserProfile } from "./models/Profile";
-import { getUsers } from "../src/services/services";
+import {
+  getUsers,
+  putUser,
+  updateUserProfileBackend,
+} from "../src/services/services";
 import AuthContext from "./AuthContext";
 import Login from "./Login";
 
 function App() {
   const [likedMatches, setLikedMatches] = useState<string[]>([]);
   const [dislikedMatches, setDislikedMatches] = useState<string[]>([]);
-  const { userProfile } = useContext(AuthContext);
+  const { userProfile, updateUserProfile } = useContext(AuthContext);
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
-  const [myMatches, setMyMatches] = useState<UserProfile[]>([]);
+
   useEffect(() => {
     getUsers().then((users) => {
       setProfiles(users);
     });
+    setLikedMatches(userProfile?.likedUsers || []);
+    setDislikedMatches(userProfile?.dislikedUsers || []);
   }, []);
 
   const addLikedMatch = (id: string = "") => {
     setLikedMatches((prev) => [...prev, id]);
-    const likedProfile = profiles.find((profile) => profile.id === id);
+    const likedProfile = profiles?.find((profile) => profile.id === id);
     if (likedProfile) {
-      setMyMatches((prev) => [...prev, likedProfile]);
+      updateUserProfileBackend({
+        ...userProfile,
+        likedUsers: [...likedMatches, id],
+      });
+      updateUserProfile({ ...userProfile, likedUsers: [...likedMatches, id] });
       const newProfiles = profiles.filter((profile) => profile.id !== id);
       setProfiles(newProfiles);
     }
@@ -66,18 +81,34 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Home handleLike={addLikedMatch} handleDislike={addDislikedMatch} profiles={profiles} />}
+              element={
+                <Home
+                  handleLike={addLikedMatch}
+                  handleDislike={addDislikedMatch}
+                  profiles={profiles}
+                />
+              }
             />
             <Route
               path="/matches"
-              element={<Matches profiles={myMatches} handleDislike={addDislikedMatch} handleLike={addLikedMatch} />}
+              element={
+                <Matches
+                  handleDislike={addDislikedMatch}
+                  handleLike={addLikedMatch}
+                />
+              }
             />
             <Route path="/messages" element={<Messages />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/profile"
               element={
-                <Profile onMatches={false} profile={userProfile} onLike={addLikedMatch} onDislike={addDislikedMatch} />
+                <Profile
+                  onMatches={false}
+                  profile={userProfile}
+                  onLike={addLikedMatch}
+                  onDislike={addDislikedMatch}
+                />
               }
             />
             <Route path="/profile/edit" element={<ProfileEditForm />} />

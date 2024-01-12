@@ -1,15 +1,21 @@
-import { FC } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { UserProfile } from "../../models/Profile";
 import Profile from "../Profile/Profile";
 // import HomeScroll from "../Home/HomeScroll";
 import { Link } from "react-router-dom";
+import { getMatches } from "../../services/matches";
+import AuthContext from "../../AuthContext";
 interface MatchesProps {
-  profiles: UserProfile[];
   handleLike: (id: string) => void;
   handleDislike: (id: string) => void;
 }
 
-const Matches: FC<MatchesProps> = ({ profiles, handleDislike, handleLike }) => {
+const Matches: FC<MatchesProps> = ({ handleDislike, handleLike }) => {
+  const [profiles, setProfiles] = useState<UserProfile[]>([]);
+  const { userProfile } = useContext(AuthContext);
+  useEffect(() => {
+    getMatches(userProfile.id).then((profiles) => setProfiles(profiles));
+  }, []);
   return (
     <div>
       {profiles.length > 0 ? (
