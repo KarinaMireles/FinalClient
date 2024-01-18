@@ -40,6 +40,7 @@ interface Props {
 const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
   const [isLiked, setIsLiked] = useState("undecided");
   return (
+    <>
     <Slider {...settings}>
       {profiles.map((profile, index) => (
         <div className="center" key={index}>
@@ -63,6 +64,8 @@ const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
         </div>
       ))}
     </Slider>
+    
+    </>
   );
 };
 export default HomeScroll;
