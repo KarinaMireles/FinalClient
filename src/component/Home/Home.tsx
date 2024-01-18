@@ -8,6 +8,7 @@ interface HomeProps {
   profiles: UserProfile[];
 }
 
+
 const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
   // const handleDislike = (index: number) => {
   //   // Removing the disliked profile from the array
@@ -18,6 +19,13 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
   //   // For now, just remove the profile, but you could add different logic
   //   setProfiles((prev) => prev.filter((_, i) => i !== index));
   // };
+  const [notesClass, setNotesClass] = useState("notes")
+  const likePerson = async (id: string) => {
+    setTimeout(() => {
+      setNotesClass("notes")
+      handleLike(id)
+    }, 800) 
+  }
 
   return (
     <div className="home">
@@ -25,12 +33,20 @@ const Home: FC<HomeProps> = ({ handleDislike, handleLike, profiles }) => {
         <Profile
           onMatches={false}
           onDislike={handleDislike}
-          onLike={handleLike}
+          onLike={(id) => {
+            setNotesClass("notes-active")
+            likePerson(id) 
+          }}
           profile={profiles[0]}
         />
       ) : (
         <p>No more profiles to view.</p>
       )}
+      <div className={notesClass}>
+        <div className="note">♪</div>
+        <div className="note">♫</div>
+        <div className="note">♬</div>
+      </div>
       {/* {profiles.length > 0 ? (
         <HomeScroll
           profiles={profiles}

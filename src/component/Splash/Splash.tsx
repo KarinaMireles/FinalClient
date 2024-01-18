@@ -1,5 +1,4 @@
 import "./Splash.css";
-import soulSymphonyLogo from './soul-symphony-2.png'
 
 const Splash = () => {
   const handleLogin = () => {
