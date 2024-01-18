@@ -11,7 +11,6 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  //centerPadding: 0,
   centerMode: true,
   adaptiveHeight: false,
   variableHeight: false,
@@ -23,6 +22,7 @@ const settings = {
         slidesToShow: 1,
         slidesToScroll: 1,
         vertical: true,
+        centerMode: true,
         verticalSwiping: true,
         infinite: false,
         dots: false,
@@ -42,7 +42,7 @@ const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
   return (
     <Slider {...settings}>
       {profiles.map((profile, index) => (
-        <div key={index}>
+        <div className="center" key={index}>
           <div className="slider">
             <img
               className="sliderimage"
@@ -56,8 +56,8 @@ const HomeScroll: FC<Props> = ({ profiles, onLike, onDislike }) => {
               <div>{profile.bio}</div>
             </div>
             <div className="slider__buttons">
-              <button onClick={() => onDislike(profile.id)}>Dislike (X)</button>
-              <button onClick={() => onLike(profile.id)}>Like (♥)</button>
+              <button onClick={() => onDislike(profile.id)}>X</button>
+              <button onClick={() => onLike(profile.id)}>♥</button>
             </div>
           </div>
         </div>

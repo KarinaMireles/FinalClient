@@ -5,6 +5,8 @@
 
 body {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -39,6 +41,7 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  margin: 10px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -52,6 +55,12 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.logout-button {
+  position: fixed;
+  top: 2px;
+  left: 2px;
 }
 
 @media (prefers-color-scheme: light) {

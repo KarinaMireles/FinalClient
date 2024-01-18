@@ -33,13 +33,15 @@ const ProfileEditForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{display: "flex", flexDirection: "column", alignItems: "centered"}}>
       <form onSubmit={handleProfileSubmit}>
         <label>Username</label>{" "}
         <input type="text" name="displayName" value={input.displayName} onChange={handleChange} />
         <label>Email</label> <input type="text" name="email" value={input.email} onChange={handleChange} />
         <label>Bio</label> <input type="textarea" name="bio" value={input.bio} onChange={handleChange} />
         <label>Age</label> <input type="number" name="age" value={input.age || 0} onChange={handleChange} />
+        <label>Gender</label> <input type="string" name="gender" value={input.gender} onChange={handleChange} />
+        <label>Location</label> <input type="string" name="location" value={input.location} onChange={handleChange} />
         <button type="submit" className="profileButton">
           Submit
         </button>

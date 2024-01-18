@@ -8,11 +8,17 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
 @media (min-width: 768px) {
-  .App__content {
+  .App {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
   }
 }

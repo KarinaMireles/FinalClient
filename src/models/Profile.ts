@@ -10,7 +10,7 @@ export interface UserProfile {
   status: string | null;
   profilePhoto: string | null;
   musicGenres: string[] | null;
-  location: string | null;
+  location: string;
   id: string;
   likedUsers: string[];
   dislikedUsers: string[];
