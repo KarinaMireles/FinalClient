@@ -17,11 +17,11 @@ const BottomMenu = () => {
           <span>Matches</span>
         </Link>
       </div>
-      <div className="bottom-menu__item">
-        {/* <Link to="/messages">
+      {/* <div className="bottom-menu__item">
+        <Link to="/messages">
           <span>Messages</span>
-        </Link> */}
-      </div>
+        </Link>
+      </div> */}
       <div className="bottom-menu__item">
         <Link to="/profile">
           <span>Profile</span>
