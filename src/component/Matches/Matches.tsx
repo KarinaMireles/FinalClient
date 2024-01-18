@@ -21,15 +21,10 @@ const Matches: FC<MatchesProps> = ({ handleDislike, handleLike }) => {
       {profiles.length > 0 ? (
         profiles.map((profile) => (
           <div key={profile.id}>
-            <Profile
-              profile={profile}
-              onDislike={handleDislike}
-              onLike={handleLike}
-              onMatches={true}
-            />
-            <Link to={`/messages/${profile.id}`} className="message-button">
+            <Profile profile={profile} onDislike={handleDislike} onLike={handleLike} onMatches={true} />
+            {/* <Link to={`/messages/${profile.id}`} className="message-button">
               Message
-            </Link>
+            </Link> */}
           </div>
         ))
       ) : (

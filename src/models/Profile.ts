@@ -8,7 +8,7 @@ export interface UserProfile {
   topArtists: { name: string; genres: string[] }[];
   age: number | null;
   status: string | null;
-  profilePhoto: string | null;
+  profilePictures: string[];
   musicGenres: string[] | null;
   location: string;
   id: string;

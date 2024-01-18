@@ -23,7 +23,7 @@ const Profile: FC<ProfileProps> = ({ profile, onLike, onDislike, onMatches = fal
       <div className="slider">
         <img
           className="sliderimage"
-          src={(profile && profile.profilePhoto) || ""}
+          src={(profile && profile.profilePictures[0]) || ""}
           alt={`${profile && profile.displayName}`}
         />
         <div className="slider__text">
