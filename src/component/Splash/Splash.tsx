@@ -10,7 +10,13 @@ const Splash = () => {
   return (
     <div className="Splash">
       <div className="form-container">
-        <img src={soulSymphonyLogo} alt="Soul Symphony Logo" className="logo"/>
+        <div className="bar-container">
+          <div className="bar" id="bar1"></div>
+          <div className="bar" id="bar2"></div>
+          <div className="bar"></div>
+          <div className="bar" id="bar4"></div>
+          <div className="bar" id="bar5"></div>
+        </div>
         <p>Find your perfect match for the music you love</p>
         <button className="login-button" onClick={handleLogin}>
           Login

@@ -17,6 +17,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 75%;
+    height: 300px;
     box-sizing: border-box;
     margin: auto;
 }
@@ -53,6 +54,7 @@ p {
         padding: 50px;
         margin: auto;
         max-width: 600px;
+        height: 350px;
     }
   
     .logo {
@@ -91,5 +93,62 @@ p {
     .logout-button {
         padding: 15px 30px;
         font-size: 1.2em;
+    }
+}
+
+.bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.bar {
+    width: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, grey, darkgrey);
+}
+
+#bar1 {
+    height: 50%;
+    background: linear-gradient(to bottom, purple, rebeccapurple);
+    animation: oscillate 1s infinite alternate;
+}
+
+#bar2 {
+    height: 75%;
+    background: linear-gradient(to bottom, violet, darkviolet);
+    animation: oscillate 1s infinite alternate;
+    animation-delay: 0.25s;
+}
+
+.bar:nth-child(3) {
+    height: 100%;
+    background: linear-gradient(to bottom, red, darkred);
+}
+
+#bar4 {
+    height: 75%;
+    background: linear-gradient(to bottom, orange, darkorange);
+    animation: oscillate 1s infinite alternate;
+    animation-delay: 0.5s;
+}
+
+#bar5 {
+    height: 50%;
+    background: linear-gradient(to bottom, yellow, gold);
+    animation: oscillate 1s infinite alternate;
+  animation-delay: 0.75s;
+}
+
+
+@keyframes oscillate {
+    from {
+        transform: translateY(-10px);
+    }
+    to {
+        transform: translateY(10px);
     }
 }
