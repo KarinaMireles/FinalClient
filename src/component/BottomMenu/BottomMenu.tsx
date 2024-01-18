@@ -18,9 +18,9 @@ const BottomMenu = () => {
         </Link>
       </div>
       <div className="bottom-menu__item">
-        <Link to="/messages">
+        {/* <Link to="/messages">
           <span>Messages</span>
-        </Link>
+        </Link> */}
       </div>
       <div className="bottom-menu__item">
         <Link to="/profile">

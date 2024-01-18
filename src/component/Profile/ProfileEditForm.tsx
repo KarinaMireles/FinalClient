@@ -33,7 +33,7 @@ const ProfileEditForm: React.FC = () => {
   };
 
   return (
-    <div style={{display: "flex", flexDirection: "column", alignItems: "centered"}}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "centered" }}>
       <form onSubmit={handleProfileSubmit}>
         <label>Username</label>{" "}
         <input type="text" name="displayName" value={input.displayName} onChange={handleChange} />
@@ -46,7 +46,7 @@ const ProfileEditForm: React.FC = () => {
           Submit
         </button>
       </form>
-      <ImageUpload />
+      {/* <ImageUpload /> */}
     </div>
   );
 };
