@@ -16,9 +16,10 @@ const Header = () => {
   };
   return (
     <div className="header">
-      <button className="login-button" onClick={handleLogout}>
+      <button className="logout-button" onClick={handleLogout}>
         Logout
       </button>
+      <h1>Soul Symphony</h1>
     </div>
   );
 };

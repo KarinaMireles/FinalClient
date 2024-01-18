@@ -29,13 +29,14 @@ const Profile: FC<ProfileProps> = ({ profile, onLike, onDislike, onMatches = fal
         <div className="slider__text">
           <div>{profile && profile.displayName}</div>
           <div>{profile && profile.age}</div>
+          <div>{profile && profile.gender}</div>
           <div>{profile && profile.location}</div>
           <div>{profile && profile.bio}</div>
         </div>
         {onMatches === false && onUserProfilePage === false && (
           <div className="slider__buttons">
-            <button onClick={() => onDislike(profile.id)}>Dislike (X)</button>
-            <button onClick={() => onLike(profile.id)}>Like (♥)</button>
+            <button onClick={() => onDislike(profile.id)}>X</button>
+            <button onClick={() => onLike(profile.id)}>♥</button>
           </div>
         )}
         {userProfile?.id === profile?.id && <button onClick={handleEditProfile}> Edit Profile </button>}
